@@ -1,6 +1,6 @@
 @extends('layouts/master')
 @section('content')
-<h1>Create a Employee</h1>
+<h1>Add a Employee</h1>
 
 <!-- if there are creation errors, they will show here -->
 {{ HTML::ul($errors->all()) }}
@@ -42,7 +42,7 @@
 		</select>
     </div>
 
-    {{ Form::submit('Create Employee!', array('class' => 'btn btn-primary')) }}
+    {{ Form::submit('Add Employee!', array('class' => 'btn btn-primary')) }}
     <a href="{{ URL::to('employee') }}" class='btn btn-info'>Cancel</a>
 
 {{ Form::close() }}

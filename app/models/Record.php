@@ -14,7 +14,8 @@ Class Record extends Eloquent{
 		return $query->join('clients as c','c.id','=','records.client_id')
 			->join('employees as e','e.id','=','records.employee_id')
 			->select('records.id as records_id','c.id as client_id','records.date','c.lastname','c.firstname',
-				'e.firstname as emp_name','records.payments');
+				'e.firstname as emp_name','records.payments')
+			->where('records.payments', '!=', '0');
 	}
 
 }

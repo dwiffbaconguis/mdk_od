@@ -4,8 +4,9 @@
    <title>MDK LIDO LOANS</title>
    {{ HTML::style('assets/css/bootstrap.min.css') }}
    {{ HTML::style('assets/css/jquery-ui.min.css') }}
-   {{ HTML::style('assets/css/jquery.dataTables.css') }}
+   {{ HTML::style('assets/css/jquery.dataTables.min.css') }}
    {{ HTML::style('assets/css/style.css') }}
+   {{ HTML::style('assets/TableTools/css/dataTables.tableTools.min.css')}}
 </head>
 <body>
 	{{ HTML::script('assets/js/jquery.js') }}

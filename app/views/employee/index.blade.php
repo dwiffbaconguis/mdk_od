@@ -2,11 +2,13 @@
 @section('content')
 	<h1>All Employee</h1>
 
+	@if(Auth::user()->user_level === 'Admin')
 	<nav class="navbar navbar-inverse">
 	    <ul class="nav navbar-nav">
 	        <li><a href="{{ URL::to('employee/create') }}">Add Employee</a>
 	    </ul>
 	</nav>
+	@endif
 	<!-- will be used to show any messages -->
 	@if (Session::has('message'))
 	    <div class="alert alert-info">{{ Session::get('message') }}</div>
@@ -28,12 +30,16 @@
 	            <td>{{ $value->firstname }}</td>
 	            <td>{{ $value->user_level }}</td>
 	            <td>
-	                {{ Form::open(array('url' => 'employee/' . $value->id, 'class' => 'pull-right')) }}
-	                    {{ Form::hidden('_method', 'DELETE') }}
-	                    {{ Form::submit('Delete', array('class' => 'btn btn-warning')) }}
-	                {{ Form::close() }}
-	                <a class="btn btn-small btn-success" href="{{ URL::to('employee/' . $value->id) }}">View</a>
-	                <a class="btn btn-small btn-info" href="{{ URL::to('employee/' . $value->id . '/edit') }}">Edit</a>
+	            	@if(Auth::user()->user_level === 'Admin')
+		                {{ Form::open(array('url' => 'employee/' . $value->id, 'class' => 'pull-right')) }}
+		                    {{ Form::hidden('_method', 'DELETE') }}
+		                    {{ Form::submit('Delete', array('class' => 'btn btn-warning')) }}
+		                {{ Form::close() }}
+		                <a class="btn btn-small btn-success" href="{{ URL::to('employee/' . $value->id) }}">View</a>
+		                <a class="btn btn-small btn-info" href="{{ URL::to('employee/' . $value->id . '/edit') }}">Edit</a>
+	                @else
+	            		<a class="btn btn-small btn-success" href="{{ URL::to('employee/' . $value->id) }}">View</a>
+	            	@endif
 	            </td>
 	        </tr>
 	    @endforeach

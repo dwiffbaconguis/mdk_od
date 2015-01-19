@@ -29,7 +29,24 @@ $.fn.dataTable.ext.search.push(
 
 $(document).ready(function(){
 	var table = $('#report-list').DataTable({
-   		 "footerCallback": function ( row, data, start, end, display ) {
+      "scrollY": "400px",
+      "scrollCollapse": true,
+      "paging": false,
+      "dom": 'T<"clear">lfrtip',
+        "tableTools": {
+            "sRowSelect": "multi",
+            "sSwfPath": "assets/TableTools/swf/copy_csv_xls_pdf.swf",
+            "aButtons": [
+                "print",
+                {'sExtends':'xls',
+                 "oSelectorOpts": { filter: 'applied', order: 'current' },
+                },
+                {'sExtends':'pdf',
+                 "oSelectorOpts": { filter: 'applied', order: 'current' },
+                }
+            ]
+        },
+ 		   "footerCallback": function ( row, data, start, end, display ) {
           var api = this.api(), data;
 
           // Remove the formatting to get integer data for summation
@@ -58,7 +75,7 @@ $(document).ready(function(){
 
           // Update footer
           $( api.column( 3 ).footer() ).html(
-              'P'+pageTotal +' ( P'+ total +' total)'
+              'P'+pageTotal
           );
       }
   });
