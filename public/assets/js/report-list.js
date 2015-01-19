@@ -38,12 +38,12 @@ $(document).ready(function(){
             "sSwfPath": "assets/TableTools/swf/copy_csv_xls_pdf.swf",
             "aButtons": [
                 "print",
-                {'sExtends':'xls',
-                 "oSelectorOpts": { filter: 'applied', order: 'current' },
-                },
-                {'sExtends':'pdf',
-                 "oSelectorOpts": { filter: 'applied', order: 'current' },
-                }
+                  {'sExtends':'xls',
+                   "oSelectorOpts": { filter: 'applied', order: 'current' },
+                  },
+                  {'sExtends':'pdf',
+                   "oSelectorOpts": { filter: 'applied', order: 'current' },
+                  }
             ]
         },
  		   "footerCallback": function ( row, data, start, end, display ) {
